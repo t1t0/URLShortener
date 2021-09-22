@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ShortLink;
+use App\Models\Shortlink;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -35,7 +35,7 @@ class ShortlinkController extends Controller
 
     public function show(Request $request)
     {
-        $link = ShortLink::where('code', '=', $request->code)->firstOrFail();
+        $link = Shortlink::where('code', '=', $request->code)->firstOrFail();
         $link->increment('visits');
         return redirect($link->url);
     }

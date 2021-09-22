@@ -9,7 +9,7 @@
         </div>
         @if($recentNsfw)
         <div class="uk-card-footer">
-            <span class="uk-label uk-label-danger">Danger</span>
+            <span class="uk-label uk-label-danger">NSFW</span>
         </div>
         @endif
     </div>
