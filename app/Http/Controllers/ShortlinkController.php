@@ -24,7 +24,7 @@ class ShortlinkController extends Controller
 
         $request->exists('nsfw') ? $nsfw = $request->nsfw : $nsfw = false;
 
-        $shortLink = ShortLink::firstOrCreate([
+        $shortLink = Shortlink::firstOrCreate([
             'code' => Str::random(8),
             'url' => $request->url,
             'nsfw' => $nsfw
@@ -42,7 +42,7 @@ class ShortlinkController extends Controller
 
     public function topVisited()
     {
-        $topUrls = ShortLink::all()->sortByDesc('visits')->take(100);
+        $topUrls = Shortlink::all()->sortByDesc('visits')->take(100);
         return view('topUrls', ['topUrls' => $topUrls]);
     }
 
