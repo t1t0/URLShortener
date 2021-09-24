@@ -56,7 +56,7 @@ class ShortlinkController extends Controller
 
         $request->exists('nsfw') ? $nsfw = $request->nsfw : $nsfw = false;
 
-        $shortLink = ShortLink::firstOrCreate([
+        $shortLink = Shortlink::firstOrCreate([
             'code' => Str::random(8),
             'url' => $request->url,
             'nsfw' => $nsfw
@@ -68,7 +68,7 @@ class ShortlinkController extends Controller
     public function ApiShowMostVisitedLinks()
     {
         $topUrls = [];
-        $queryTopUrls = ShortLink::all()->sortByDesc('visits')->take(100); 
+        $queryTopUrls = Shortlink::all()->sortByDesc('visits')->take(100); 
         foreach($queryTopUrls as $url){
             $topUrls [] = $url->linkData();
         }
